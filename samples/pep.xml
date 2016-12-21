@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+
+<!--
+	Test grammar for Pep. For category S, should only license phrases like
+		Pep (is an Earley parser)*
+	This grammar is meant to test direct left recursion.
+-->
+<grammar name="pep">
+	<rule category="S">
+		<category name="Pep"/>
+		<category name="Rest"/>
+	</rule>
+	<rule category="Pep">
+		<category name="Pep"/>
+		<category name="Rest"/>
+	</rule>
+	<rule category="Pep">
+		<category terminal="true" name="Pep"/>
+	</rule>
+	<rule category="Rest">
+		<category name="Is"/>
+		<category name="An"/>
+		<category name="Earley"/>
+		<category name="Parser"/>
+	</rule>
+	<rule category="Is">
+		<category terminal="true" name="is"/>
+	</rule>
+	<rule category="An">
+		<category terminal="true" name="an"/>
+	</rule>
+	<rule category="Earley">
+		<category terminal="true" name="Earley"/>
+	</rule>
+	<rule category="Parser">
+		<category terminal="true" name="Parser"/>
+	</rule>
+</grammar>

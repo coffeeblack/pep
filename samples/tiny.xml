@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+
+<!--
+	Test grammar for Pep. For category S, should license strings like:
+		Mary saw the man
+		Mary saw the man in the park
+		Mary saw the man in the park with the telescope
+		Mary saw the man in the park with the telescope at midnight
+		etc.
+	Should have 2 parses for Mary saw her duck.
+	Should not license string like (for category S):
+		Mary midnight
+		Mary saw the the telescope
+-->
+<grammar name="tiny">
+	<rule category="S">
+		<category name="NP"/>
+		<category name="VP"/>
+	</rule>
+	<rule category="VP">
+		<category name="VP"/>
+		<category name="PP"/>
+	</rule>
+	<rule category="VP">
+		<category name="VT"/>
+		<category name="NP"/>
+	</rule>
+	<rule category="VP">
+		<category name="VS"/>
+		<category name="S"/>
+	</rule>
+	<rule category="N">
+		<category name="N"/>
+		<category name="PP"/>
+	</rule>
+	<rule category="PP">
+		<category name="P"/>
+		<category name="NP"/>
+	</rule>
+	<rule category="NP">
+		<category name="Det"/>
+		<category name="N"/>
+	</rule>
+	<rule category="NP">
+		<category terminal="true" name="her"/>
+	</rule>
+	<rule category="NP">
+		<category terminal="true" name="Mary"/>
+	</rule>
+	<rule category="NP">
+		<category terminal="true" name="midnight"/>
+	</rule>
+	<rule category="Det">
+		<category terminal="true" name="the"/>
+	</rule>
+	<rule category="Det">
+		<category terminal="true" name="a"/>
+	</rule>
+	<rule category="Det">
+		<category terminal="true" name="her"/>
+	</rule>
+	<rule category="N">
+		<category terminal="true" name="dragon"/>
+	</rule>
+	<rule category="N">
+		<category terminal="true" name="telescope"/>
+	</rule>
+	<rule category="N">
+		<category terminal="true" name="man"/>
+	</rule>
+	<rule category="N">
+		<category terminal="true" name="cave"/>
+	</rule>
+	<rule category="N">
+		<category terminal="true" name="park"/>
+	</rule>
+	<rule category="N">
+		<category terminal="true" name="duck"/>
+	</rule>
+	<rule category="VP">
+		<category terminal="true" name="left"/>
+	</rule>
+	<rule category="VP">
+		<category terminal="true" name="duck"/>
+	</rule>
+	<rule category="VS">
+		<category terminal="true" name="thought"/>
+	</rule>
+	<rule category="VT">
+		<category terminal="true" name="saw"/>
+	</rule>
+	<rule category="VS">
+		<category terminal="true" name="saw"/>
+	</rule>
+	<rule category="VT">
+		<category terminal="true" name="loved"/>
+	</rule>
+	<rule category="PP">
+		<category terminal="true" name="there"/>
+	</rule>
+	<rule category="P">
+		<category terminal="true" name="in"/>
+	</rule>
+	<rule category="P">
+		<category terminal="true" name="at"/>
+	</rule>
+	<rule category="P">
+		<category terminal="true" name="with"/>
+	</rule>
+</grammar>

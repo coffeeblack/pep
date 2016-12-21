@@ -1,0 +1,19 @@
+Changes from Pep 0.3 to Pep 0.4
+===============================
+
+ * Generalized the parsing algorithm to cover grammars that contain rules that
+   have a mix of terminals and nonterminals on the right side. This involved
+   
+   - changing EarleyParser's scan() method and updating ParserListener with a
+     modified hook edgeScanned();
+   - changing Edge, Chart, the test files, and adding the ntmix.xml grammar;
+   - modifying the behavior of the option PREDICT_FOR_PRETERMINALS: this option
+     can be overridden if the grammar contains a rule with a right-hand side
+     that contains both terminals and nonterminals;
+   - changing the format of the grammar specification files to allow categories
+     that contain a right side with a mix of terminals and nonterminals.
+
+ * Adopted Apache's commons-cli library for parsing command-line options.
+ 
+ * Added several convenience methods to Edge, ParseTree, Chart, and
+   EarleyParser.

@@ -1,0 +1,48 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+	<xsd:annotation>
+		<xsd:documentation xml:lang="en">
+			Grammar definition for Pep.
+			Copyright (C) 2007 Scott Martin
+			Author: Scott Martin (http://www.ling.osu.edu/~scott/)
+			$Id: grammar.xsd 1812 2010-02-08 22:06:32Z scott $
+			
+			This library is free software; you can redistribute it and/or modify it
+			under the terms of the GNU Lesser General Public License as published by
+			the Free Software Foundation; either version 2.1 of the License, or (at
+			your option) any later version. The GNU Lesser General Public License is
+			distributed with this software in the file COPYING.
+		</xsd:documentation>
+	</xsd:annotation>
+
+	<xsd:element name="grammar" type="grammarType"/>
+
+	<xsd:complexType name="grammarType">
+		<xsd:sequence>
+			<xsd:element name="rule" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+		<xsd:attribute name="name" type="xsd:ID" use="required"/>
+	</xsd:complexType>
+	
+	<xsd:element name="rule" type="ruleType"/>
+	
+	<xsd:complexType name="ruleType">
+		<xsd:sequence>
+			<xsd:element name="category" minOccurs="1" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:attribute name="name" type="xsd:NMTOKEN" use="required"/>
+					<xsd:attribute name="terminal" default="false">
+						<xsd:simpleType>
+			        <xsd:restriction base="xsd:string">
+			          <xsd:enumeration value="true"/>
+			          <xsd:enumeration value="false"/>
+			        </xsd:restriction>
+			      </xsd:simpleType>
+					</xsd:attribute>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="category" type="xsd:NMTOKEN" use="required"/>
+	</xsd:complexType>
+	
+</xsd:schema>

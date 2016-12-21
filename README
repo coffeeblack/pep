@@ -1,0 +1,87 @@
+Pep version 0.4: an Earley parser in Java, Copyright (C) 2007 Scott Martin.
+
+Pep is free software distributed under the terms of the GNU Lesser General
+Public License. See the COPYING file for details.
+
+Author: Scott Martin (http://www.ling.osu.edu/~scott/)
+
+The name `Pep' stands for "Pep is an Earley Parser" and is an example of
+direct left recursion. Pep can both recognize and parse strings of any
+context-free grammar (CFG). For the parsing case, Pep provides all possible
+parses of a given string according to a given grammar. Several sample grammars
+are provided in the ./samples directory. For an example of how to use Pep as a
+library, see the command-line front end implemented in
+edu/osu/ling/pep/Pep.java (found in the ./src directory).
+
+Acknowledgments
+===============
+Thanks to Detmar Meurers for providing the `tiny' grammar, to Jim Slattery
+for pointing out that ParseTree.children is much better represented as a
+java.util.List than a java.util.Set, and to Harun Resit Zafer for noticing that 
+GrammarParser should really be public.
+
+Requirements
+============
+	Running
+		Java Runtime Environment >= 1.5
+		http://java.sun.com/
+	
+	Building
+		Ant >= 1.6.1
+		http://ant.apache.org/
+	
+	Testing
+		JUnit >= 3.8.1
+		http://www.junit.org/
+
+Running
+=======
+1.	Set the environment variable PEP_HOME to the directory where Pep is
+	unpacked. For example, with Pep's directory as the current directory,
+	do:
+		
+	$ export PEP_HOME=`pwd`
+		
+	on Linux systems.
+
+2.	Invoke Pep using the shell script in $PEP_HOME/bin/pep. The location of
+	the grammar to use, seed category, and string to parse must be
+	specified. Example (again from $PEP_HOME on a Linux machine):
+		
+	$ ./bin/pep -v -g samples/miniscule.xml -s S the boy left
+	
+	or equivalently (reading from standard input):
+	
+	$ echo the boy left | ./bin/pep -v -g samples/miniscule.xml -s S -
+		
+	This command will parse the string `the boy left' using the grammar in
+	samples/miniscule.xml for the seed category `S'. Pep can show more or less
+	information about what it is doing depending on the level of verbosity, as
+	specified by the flag "-v n" (where n is the verbosity level, and 1 is 
+	assumed for n if it is omittied). For more help on Pep's options, invoke 
+	pep as above with `-h' or `--help' among the arguments.
+	
+	The $PEP_HOME/samples directory contains several sample grammars. Each
+	grammar is specified in its own XML file, and example sentences are
+	listed. The file etc/grammar.xsd contains an XML schema describing the format
+	of Pep's grammar files.
+
+Building
+========
+An ant build file (build.xml) is included for building Pep from source. To
+compile Pep's source to Java bytecode, just run ant with the `compile' target:
+
+$ ant compile
+
+The packaged Pep library can also be recreated using the `package' task.
+
+Testing
+=======
+The ant build file (as discussed above in `Building') contains a target for
+compiling and running the JUnit tasks that test Pep. To run all unit tests,
+just run ant with the `test' target.
+
+Documentation
+=============
+Javadoc API documentation for Pep can be generated using the `document' task,
+which will place the API docs in $PEP_HOME/docs/api.

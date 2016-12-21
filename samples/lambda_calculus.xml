@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!--
+	Grammar for the lambda calculus. Try 
+	"( lambda f . ( lambda x . ( f x ) ) )"
+-->
+<grammar name="lambda_calculus">
+	<rule category="M">
+		<category name="V"/>
+	</rule>
+	<rule category="M">
+		<category name="LP"/>
+		<category name="M"/>
+		<category name="M"/>
+		<category name="RP"/>
+	</rule>
+	<rule category="M">
+		<category name="LP"/>
+		<category name="L"/>
+		<category name="V"/>
+		<category name="Dot"/>
+		<category name="M"/>
+		<category name="RP"/>
+	</rule>
+	<rule category="L">
+		<category terminal="true" name="lambda"/>
+	</rule>
+	<rule category="V">
+		<category terminal="true" name="x"/>
+	</rule>
+	<rule category="V">
+		<category terminal="true" name="y"/>
+	</rule>
+	<rule category="V">
+		<category terminal="true" name="z"/>
+	</rule>
+	<rule category="V">
+		<category terminal="true" name="f"/>
+	</rule>
+	<rule category="V">
+		<category terminal="true" name="g"/>
+	</rule>
+	<rule category="LP">
+		<category terminal="true" name="("/>
+	</rule>
+	<rule category="RP">
+		<category terminal="true" name=")"/>
+	</rule>
+	<rule category="Dot">
+		<category terminal="true" name="."/>
+	</rule>
+</grammar>

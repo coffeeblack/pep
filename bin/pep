@@ -1,0 +1,22 @@
+#!/bin/sh
+#
+# $Id: pep 2584 2011-03-28 21:45:42Z scott $
+# Copyright (C) 2007 Scott Martin
+# 
+# This library is free software; you can redistribute it and/or modify it
+# under the terms of the GNU Lesser General Public License as published by the
+# Free Software Foundation; either version 2.1 of the License, or (at your
+# option) any later version. The GNU Lesser General Public License is
+# distributed with this software in the file COPYING.
+# 
+# Runs Pep from the command line
+# Author: Scott Martin (http://www.ling.osu.edu/~scott/)
+
+if [ "$PEP_HOME" = "" ] ; then
+	echo "Error: PEP_HOME is not set."
+	echo "PEP_HOME should be set to the directory where Pep is located."
+	
+	exit 1;
+fi
+
+java -jar $PEP_HOME/package/pep.jar $@

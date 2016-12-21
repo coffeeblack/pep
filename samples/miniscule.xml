@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+
+<!--
+	Test grammar for Pep. For category S, should only license "the boy left".
+-->
+<grammar name="miniscule">
+	<rule category="S">
+		<category name="NP"/>
+		<category name="VP"/>
+	</rule>
+	<rule category="NP">
+		<category name="Det"/>
+		<category name="N"/>
+	</rule>
+	<rule category="Det">
+		<category terminal="true" name="the"/>
+	</rule>
+	<rule category="N">
+		<category terminal="true" name="boy"/>
+	</rule>
+	<rule category="VP">
+		<category terminal="true" name="left"/>
+	</rule>
+</grammar>

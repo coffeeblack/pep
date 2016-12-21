@@ -1,0 +1,190 @@
+<?xml version="1.0"?>
+<!--
+	$Id: build.xml 2521 2011-02-10 20:15:13Z scott $
+	Copyright (C) 2007 Scott Martin
+
+	This library is free software; you can redistribute it and/or modify it
+	under the terms of the GNU Lesser General Public License as published by the
+	Free Software Foundation; either version 2.1 of the License, or (at your
+	option) any later version. The GNU Lesser General Public License is
+	distributed with this software in the file COPYING.
+-->
+<!--
+	Build file for Pep.
+	
+	Targets:
+		prepare		Creates destination directory for compiled classes.
+	
+		document	Generates Javadoc documentation for Pep source code.
+		
+		compile		Compiles Pep source code.
+		
+		package		Compiles Pep source code, creates pep.jar in the package/
+							directory.
+		
+		release		Archives the project for release.
+		
+		test			Runs Pep JUnit tests.
+		
+		clean			Deletes all files in the destination directory for classes.
+-->
+<project name="Pep" default="compile" basedir=".">
+	<property file="build.properties"/>
+	
+	<description>Pep build file</description>
+	
+	<path id="build.classpath">
+  	<pathelement location="${lib.dir}/commons-cli-1.2.jar"/>
+  </path>
+	
+	<!--
+		Prepare
+		
+		Readies the build by creating destination directory for compilation.
+	-->
+	<target name="prepare">
+		<mkdir dir="${classes.dir}"/>
+	</target>
+	
+	<!--
+		Document
+		
+		Generates Javadoc API documentation to docs.dir.
+	-->
+	<target name="document">
+		<mkdir dir="${docs.dir}/api/"/>
+	  
+	  <javadoc
+			packagenames="edu.osu.ling.pep.*"
+			sourcepath="${src.dir}"
+			classpathref="build.classpath"
+			destdir="${docs.dir}/api/"
+			windowtitle="${title} ${version} API Documentation"
+			overview="${etc.dir}/overview.html"
+			author="true"
+			version="true"
+			nohelp="true"
+			nodeprecated="true">
+		
+			<doctitle><![CDATA[<h1>${title} ${version}: ${subtitle}</h1>]]></doctitle>
+			<header><![CDATA[${title} ${version} API Documentation]]></header>
+			<footer><![CDATA[${title}: ${subtitle}]]></footer>
+			
+			<bottom><![CDATA[${title} API Documentation, Copyright &copy; 2007
+				<a href="http://www.ling.osu.edu/~scott/">Scott Martin</a>
+				<p>Permission is granted to copy, distribute and/or modify this document
+    under the terms of the <a href="http://www.gnu.org/licenses/fdl-1.3.txt">GNU
+    Free Documentation License</a>, Version 1.3
+    or any later version published by the <a href="http://www.fsf.org/">Free
+    Software Foundation</a>;
+    with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
+    A copy of the license is included in the overview file.</p>]]></bottom>
+    
+			<link href="http://java.sun.com/j2se/1.5.0/docs/api/"/>
+			<link href="http://commons.apache.org/cli/api-release/"/>
+		</javadoc>
+	</target>
+
+	<!--
+		Compile
+		
+		Compiles all (non-test) Pep source files.
+	-->
+	<target name="compile" depends="prepare">
+		<javac srcdir="${src.dir}" destdir="${classes.dir}" debug="on"
+			classpathref="build.classpath"/>
+	</target>
+	
+	<!--
+		Package
+		
+		Creates a Java Archive containing all compiled Pep bytecode. The resulting
+		archive is executable because its manifest specifies the executable 
+		class mainClass as its main class.
+	-->
+	<target name="package" depends="compile">
+		<mkdir dir="${package.dir}"/>
+		
+		<jar jarfile="${package.dir}/${name}.jar">
+			<zipfileset src="${lib.dir}/commons-cli-1.2.jar" />
+			<metainf dir="${basedir}">
+				<include name="COPYING"/>
+				<include name="etc/grammar.xsd"/>
+			</metainf>
+			<manifest>
+				<attribute name="Built-By" value="${user.name}"/>
+				<attribute name="Main-Class" value="${mainClass}"/>
+			</manifest>
+			<fileset dir="${classes.dir}">
+				<include name="**/*.class"/>
+				<exclude name="**/*Test.class"/>
+				<exclude name="**/*Fixture.class"/>
+			</fileset>
+		</jar>
+	</target>
+	
+	<!--
+		Release
+		
+		Creates an archive of the entire project, for release. The created 
+		archive contains all source code, grammar files, test code, etc.
+	-->
+	<target name="release" depends="test,document,package">
+		<mkdir dir="${release.dir}"/>
+		
+		<tar destfile="${release.dir}/${name}-${version}.tar.gz" longfile="gnu"
+			compression="gzip">
+				<tarfileset dir="../" mode="755">
+					<include name="${name}/bin/"/>
+				</tarfileset>
+				<tarfileset dir="../">
+					<include name="${name}/package/"/>
+					<include name="${name}/src/"/>
+					<include name="${name}/test/"/>
+					<include name="${name}/docs/"/>
+					<include name="${name}/samples/"/>
+					<include name="${name}/etc/*.xsd"/>
+					<include name="${name}/build.*"/>
+					<include name="${name}/README"/>
+					<include name="${name}/COPYING"/>
+					<include name="${name}/CHANGES"/>
+				</tarfileset>
+		</tar>
+	</target>
+	
+	<!--
+		Test
+		
+		Runs all JUnit tests in test.dir, first compiling the test source code.
+	-->
+	<target name="test" depends="compile">
+		<javac srcdir="${test.dir}" destdir="${classes.dir}" debug="on"/>
+		
+		<junit printsummary="withOutAndErr" showoutput="true" haltonerror="true">
+			<classpath>
+				<pathelement location="${classes.dir}"/>
+				<pathelement path="${java.class.path}"/>
+			</classpath>
+			
+			<batchtest>
+		    <fileset dir="${test.dir}">
+		    	<include name="**/*Test*.java"/>
+		    </fileset>
+		  </batchtest>
+		</junit>
+	</target>
+
+	<!--
+		Clean
+		
+		Deletes all files beneath classes.dir.
+	-->
+	<target name="clean">
+		<delete>
+			<fileset dir="${classes.dir}">
+				<include name="**/*"/>
+			</fileset>
+		</delete>
+	</target>
+
+</project>

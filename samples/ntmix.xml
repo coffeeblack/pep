@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+
+<!--
+	Test grammar for Pep that mixes terminals and nonterminals on the right side.
+	Try the strings 'ttwxu', 'vtwuvvwtwuuwu'.
+-->
+<grammar name="ntmix">
+	<rule category="A">
+		<category name="B"/>
+		<category name="C"/>
+	</rule>
+	<rule category="B">
+		<category terminal="true" name="t"/>
+	</rule>
+	<rule category="B">
+		<category terminal="true" name="v"/>
+		<category name="C"/>
+	</rule>
+	<rule category="C">
+		<category name="A"/>
+		<category terminal="true" name="u"/>
+	</rule>
+	<rule category="C">
+		<category terminal="true" name="w"/>
+		<category terminal="true" name="x"/>
+	</rule>
+</grammar>

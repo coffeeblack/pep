@@ -1,0 +1,12 @@
+Lambda calculus can be called the smallest universal programming
+language. It consists of a single transformation rule 
+and a single function definition scheme. Lambda
+calculus is universal in the sense that any computable function
+can be expressed and evaluated using this formalism. It is thus
+equivalent to the Turing machine formalism. However, lambda
+calculus emphasizes the use of transformation rules, and does not
+care about the actual machine implementing them. It is an
+approach more related to software than to hardware. This article
+deals with the untyped lambda calculus as originally conceived
+by Church. Since then, some typed lambda calculi have been
+developed.

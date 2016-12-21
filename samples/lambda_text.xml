@@ -1,0 +1,436 @@
+<?xml version="1.0"?>
+
+<!--
+	Test grammar that licenses any of the sentences found in lambda_calculus.txt
+	(minus punctuation).
+-->
+<grammar name="lambda">
+	<rule category="S">
+		<category name="NP"/>
+		<category name="VP"/>
+	</rule>
+	<rule category="NP">
+		<category name="Adj"/>
+		<category name="N"/>
+	</rule>
+	<rule category="NP">
+		<category name="Det"/>
+		<category name="N"/>
+	</rule>
+	<rule category="NP">
+		<category name="Det"/>
+		<category name="NP"/>
+	</rule>
+	<rule category="NP">
+		<category name="Adj"/>
+		<category name="Npl"/>
+	</rule>
+	<rule category="NP">
+		<category name="Adj"/>
+		<category name="NP"/>
+	</rule>
+	<rule category="Det">
+		<category terminal="true" name="a"/>
+	</rule>
+	<rule category="Det">
+		<category terminal="true" name="an"/>
+	</rule>
+	<rule category="Det">
+		<category terminal="true" name="any"/>
+	</rule>
+	<rule category="Det">
+		<category terminal="true" name="the"/>
+	</rule>
+	<rule category="Det">
+		<category terminal="true" name="This"/>
+	</rule>
+	<rule category="Det">
+		<category terminal="true" name="this"/>
+	</rule>
+	<rule category="Det">
+		<category terminal="true" name="some"/>
+	</rule>
+	<rule category="VP">
+		<category name="Modal"/>
+		<category name="VPbse"/>
+	</rule>
+	<rule category="Modal">
+		<category terminal="true" name="can"/>
+	</rule>
+	<rule category="VPpsp">
+		<category name="Psp"/>
+		<category name="NP"/>
+	</rule>
+	<rule category="VPpsp">
+		<category name="Psp"/>
+		<category name="Adv"/>
+	</rule>
+	<rule category="VPpsp">
+		<category name="Psp"/>
+		<category name="Prd"/>
+	</rule>
+	<rule category="Prd">
+		<category name="As"/>
+		<category name="Prd"/>
+	</rule>
+	<rule category="Prd">
+		<category name="Adv"/>
+		<category name="Prd"/>
+	</rule>
+	<rule category="Prd">
+		<category name="By"/>
+		<category name="Dat"/>
+	</rule>
+	<rule category="Prd">
+		<category name="Psp"/>
+		<category name="Prd"/>
+	</rule>
+	<rule category="Psp">
+		<category name="Psp"/>
+		<category name="Conj"/>
+		<category name="Psp"/>
+	</rule>
+	<rule category="As">
+		<category terminal="true" name="as"/>
+	</rule>
+	<rule category="By">
+		<category terminal="true" name="by"/>
+	</rule>
+	<rule category="Psp">
+		<category terminal="true" name="called"/>
+	</rule>
+	<rule category="Psp">
+		<category terminal="true" name="expressed"/>
+	</rule>
+	<rule category="Psp">
+		<category terminal="true" name="evaluated"/>
+	</rule>
+	<rule category="Psp">
+		<category terminal="true" name="related"/>
+	</rule>
+	<rule category="Psp">
+		<category terminal="true" name="conceived"/>
+	</rule>
+	<rule category="Psp">
+		<category terminal="true" name="developed"/>
+	</rule>
+	<rule category="VPbse">
+		<category name="Bse"/>
+		<category name="VPpsp"/>
+	</rule>
+	<rule category="VPbse">
+		<category name="VTbse"/>
+		<category name="NP"/>
+	</rule>
+	<rule category="Bse">
+		<category terminal="true" name="be"/>
+	</rule>
+	<rule category="VP">
+		<category name="Pas"/>
+		<category name="VPpsp"/>
+	</rule>
+	<rule category="Coppsp">
+		<category terminal="true" name="been"/>
+	</rule>
+	<rule category="Pas">
+		<category terminal="true" name="have"/>
+	</rule>
+	<rule category="VPpsp">
+		<category name="Coppsp"/>
+		<category name="Psp"/>
+	</rule>
+	<rule category="Bse">
+		<category terminal="true" name="care"/>
+	</rule>
+	<rule category="N">
+		<category name="Adj"/>
+		<category name="N"/>
+	</rule>
+	<rule category="Adj">
+		<category terminal="true" name="Lambda"/>
+	</rule>
+	<rule category="Adj">
+		<category terminal="true" name="lambda"/>
+	</rule>
+	<rule category="Adj">
+		<category terminal="true" name="smallest"/>
+	</rule>
+	<rule category="Adj">
+		<category terminal="true" name="universal"/>
+	</rule>
+	<rule category="Adj">
+		<category terminal="true" name="programming"/>
+	</rule>
+	<rule category="Adj">
+		<category terminal="true" name="single"/>
+	</rule>
+	<rule category="Adj">
+		<category terminal="true" name="transformation"/>
+	</rule>
+	<rule category="Adj">
+		<category terminal="true" name="function"/>
+	</rule>
+	<rule category="Adj">
+		<category terminal="true" name="definition"/>
+	</rule>
+	<rule category="Adj">
+		<category terminal="true" name="computable"/>
+	</rule>
+	<rule category="Adj">
+		<category terminal="true" name="equivalent"/>
+	</rule>
+	<rule category="Adj">
+		<category terminal="true" name="transformation"/>
+	</rule>
+	<rule category="Adj">
+		<category terminal="true" name="Turing"/>
+	</rule>
+	<rule category="Adj">
+		<category terminal="true" name="machine"/>
+	</rule>
+	<rule category="Adj">
+		<category terminal="true" name="actual"/>
+	</rule>
+	<rule category="Adj">
+		<category terminal="true" name="untyped"/>
+	</rule>
+	<rule category="Adj">
+		<category terminal="true" name="typed"/>
+	</rule>
+	<rule category="N">
+		<category terminal="true" name="calculus"/>
+	</rule>
+	<rule category="N">
+		<category terminal="true" name="language"/>
+	</rule>
+	<rule category="N">
+		<category terminal="true" name="rule"/>
+	</rule>
+	<rule category="N">
+		<category terminal="true" name="scheme"/>
+	</rule>
+	<rule category="N">
+		<category terminal="true" name="sense"/>
+	</rule>
+	<rule category="N">
+		<category terminal="true" name="function"/>
+	</rule>
+	<rule category="N">
+		<category terminal="true" name="formalism"/>
+	</rule>
+	<rule category="N">
+		<category terminal="true" name="approach"/>
+	</rule>
+	<rule category="Dat">
+		<category terminal="true" name="software"/>
+	</rule>
+	<rule category="Dat">
+		<category terminal="true" name="hardware"/>
+	</rule>
+	<rule category="Dat">
+		<category terminal="true" name="Church"/>
+	</rule>
+	<rule category="N">
+		<category terminal="true" name="use"/>
+	</rule>
+	<rule category="N">
+		<category terminal="true" name="machine"/>
+	</rule>
+	<rule category="N">
+		<category terminal="true" name="article"/>
+	</rule>
+	<rule category="Npl">
+		<category terminal="true" name="rules"/>
+	</rule>
+	<rule category="Npl">
+		<category terminal="true" name="calculi"/>
+	</rule>
+	<rule category="NP">
+		<category terminal="true" name="It"/>
+	</rule>
+	<rule category="VP">
+		<category name="VT"/>
+		<category name="NP"/>
+	</rule>
+	<rule category="VT">
+		<category name="V3sof"/>
+		<category name="Vof"/>
+	</rule>
+	<rule category="VT">
+		<category name="V3swith"/>
+		<category name="Vwith"/>
+	</rule>
+	<rule category="VTbse">
+		<category name="Bse"/>
+		<category name="Vabout"/>
+	</rule>
+	<rule category="VT">
+		<category terminal="true" name="emphasizes"/>
+	</rule>
+	<rule category="V3sof">
+		<category terminal="true" name="consists"/>
+	</rule>
+	<rule category="Vof">
+		<category terminal="true" name="of"/>
+	</rule>
+	<rule category="Vabout">
+		<category terminal="true" name="about"/>
+	</rule>
+	<rule category="V3swith">
+		<category terminal="true" name="deals"/>
+	</rule>
+	<rule category="Vwith">
+		<category terminal="true" name="with"/>
+	</rule>
+	<rule category="Conj">
+		<category terminal="true" name="and"/>
+	</rule>
+	<rule category="NP">
+		<category name="NP"/>
+		<category name="Conj"/>
+		<category name="NP"/>
+	</rule>
+	<rule category="VP">
+		<category name="Cop"/>
+		<category name="AdjP"/>
+	</rule>
+	<rule category="VP">
+		<category name="Cop"/>
+		<category name="Prd"/>
+	</rule>
+	<rule category="AdjP">
+		<category name="Adj"/>
+	</rule>
+	<rule category="Cop">
+		<category terminal="true" name="is"/>
+	</rule>
+	<rule category="Cop">
+		<category name="Cop"/>
+		<category name="Adv"/>
+	</rule>
+	<rule category="Cop">
+		<category name="Cop"/>
+		<category name="AdjP"/>
+	</rule>
+	<rule category="Sbar">
+		<category name="Comp"/>
+		<category name="S"/>
+	</rule>
+	<rule category="Comp">
+		<category terminal="true" name="that"/>
+	</rule>
+	<rule category="VP">
+		<category name="VP"/>
+		<category name="Adv"/>
+	</rule>
+	<rule category="Adv">
+		<category name="In"/>
+		<category name="NP"/>
+	</rule>
+	<rule category="In">
+		<category terminal="true" name="in"/>
+	</rule>
+	<rule category="Adv">
+		<category name="Adv"/>
+		<category name="Sbar"/>
+	</rule>
+	<rule category="Adv">
+		<category name="Prs"/>
+		<category name="NP"/>
+	</rule>
+	<rule category="Prs">
+		<category terminal="true" name="using"/>
+	</rule>
+	<rule category="Adv">
+		<category terminal="true" name="thus"/>
+	</rule>
+	<rule category="Adv">
+		<category terminal="true" name="more"/>
+	</rule>
+	<rule category="Adv">
+		<category terminal="true" name="originally"/>
+	</rule>
+	<rule category="AdjP">
+		<category name="Adj"/>
+		<category name="PP"/>
+	</rule>
+	<rule category="PP">
+		<category name="P"/>
+		<category name="NP"/>
+	</rule>
+	<rule category="P">
+		<category terminal="true" name="to"/>
+	</rule>
+	<rule category="P">
+		<category terminal="true" name="of"/>
+	</rule>
+	<rule category="S">
+		<category name="Smod"/>
+		<category name="S"/>
+	</rule>
+	<rule category="Smod">
+		<category terminal="true" name="However"/>
+	</rule>
+	<rule category="N">
+		<category name="N"/>
+		<category name="PP"/>
+	</rule>
+	<rule category="VP">
+		<category name="VP"/>
+		<category name="Conj"/>
+		<category name="VP"/>
+	</rule>
+	<rule category="Modal">
+		<category terminal="true" name="does"/>
+	</rule>
+	<rule category="Neg">
+		<category terminal="true" name="not"/>
+	</rule>
+	<rule category="Modal">
+		<category name="Modal"/>
+		<category name="Neg"/>
+	</rule>
+	<rule category="Prd">
+		<category name="Prs"/>
+		<category name="Acc"/>
+	</rule>
+	<rule category="Prd">
+		<category name="NP"/>
+		<category name="Prd"/>
+	</rule>
+	<rule category="Prs">
+		<category terminal="true" name="implementing"/>
+	</rule>
+	<rule category="Acc">
+		<category terminal="true" name="them"/>
+	</rule>
+	<rule category="Prd">
+		<category name="To"/>
+		<category name="Dat"/>
+	</rule>
+	<rule category="To">
+		<category terminal="true" name="to"/>
+	</rule>
+	<rule category="Contr">
+		<category terminal="true" name="than"/>
+	</rule>
+	<rule category="Prd">
+		<category name="Prd"/>
+		<category name="Contr"/>
+		<category name="Prd"/>
+	</rule>
+	<rule category="NP">
+		<category name="NP"/>
+		<category name="Prd"/>
+	</rule>
+	<rule category="Smod">
+		<category name="Advtmp"/>
+		<category name="Time"/>
+	</rule>
+	<rule category="Advtmp">
+		<category terminal="true" name="Since"/>
+	</rule>
+	<rule category="Time">
+		<category terminal="true" name="then"/>
+	</rule>
+</grammar>
